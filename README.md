@@ -54,8 +54,6 @@ cdk deploy
 ```bash
 cd ../blueprints
 cdk bootstrap
-# this stack
-cdk synth eks-blueprint-demo-dev
 cdk deploy eks-blueprint-demo-dev
 
 # or define your VPC id with context parameter
@@ -95,7 +93,7 @@ eksctl create iamidentitymapping --cluster <cluster-name> --arn arn:aws:iam::<ac
 ## Step 3: Kubernetes Dashboard
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.1/aio/deploy/recommended.yaml
 
 kubectl apply -f k8s-dabboard/eks-admin-service-account.yaml
 
