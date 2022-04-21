@@ -129,11 +129,11 @@ kubectl apply -f ./app/sample-rest-api.yaml
 # Uninstall
 
 ```bash
-kubectl delete -f sample-rest-api.yaml
-kubectl delete hpa sample-rest-api-gpu-hpa
+kubectl delete -f ./app/sample-rest-api.yaml
 ```
 
 # Reference
 
 https://github.com/aws-quickstart/cdk-eks-blueprints
 
+https://aws-quickstart.github.io/cdk-eks-blueprints

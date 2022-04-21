@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: sample-rest-api
-          image: <ecr-url>
+          image: <account>.dkr.ecr.<region>.amazonaws.com/sample-rest-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
