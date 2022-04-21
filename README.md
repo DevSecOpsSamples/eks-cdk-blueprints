@@ -33,7 +33,7 @@ Use the `cdk` command-line toolkit to interact with your project:
 
 The VPC ID will be saved into the SSM parameter store to refer from other stacks.
 
-Parameter Name : `/cdk-eks-gpu-cluster/vpc-id`
+Parameter Name : `/cdk-eks-blueprints/vpc-id`
 
 Use the `-c vpcId` context parameter if you want to use the existing VPC.
 
