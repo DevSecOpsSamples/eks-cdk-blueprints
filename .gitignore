@@ -2,5 +2,6 @@ node_modules
 *cdk.out*
 *cdk.context.json*
 *.log
+*.DS_Store*
 
 *internal*
