@@ -1,10 +1,5 @@
 # CDK EKS Blueprints Sample
 
-```bash
-export CDK_DEFAULT_ACCOUNT=123456789012
-export CDK_DEFAULT_REGION=us-east-1
-```
-
 ## Prequisets
 
 ```bash
@@ -12,6 +7,9 @@ npm install -g aws-cdk@2.20.0
 
 # install packages in the root folder
 npm install
+
+export CDK_DEFAULT_ACCOUNT=123456789012
+export CDK_DEFAULT_REGION=us-east-1
 ```
 
 Use the `cdk` command-line toolkit to interact with your project:
@@ -26,14 +24,14 @@ Use the `cdk` command-line toolkit to interact with your project:
 | Stack                         | Time    |
 |-------------------------------|---------|
 | VPC                           | 3m      |
-| EKS cluster                   | 21m     |
+| EKS cluster                   | 21m  (38 Stacks)   |
 | Total                         | 24m     | 
 
 # Install
 
 ## Step 1: VPC
 
-VPC ID will be saved into SSM parameter store to refer from other stacks.
+The VPC ID will be saved into the SSM parameter store to refer from other stacks.
 
 Parameter Name : `/cdk-eks-gpu-cluster/vpc-id`
 
@@ -124,6 +122,7 @@ kubectl apply -f ./app/sample-rest-api.yaml
 ```
 
 [app/sample-rest-api.yaml](./app/sample-rest-api.yaml)
+
 # Uninstall
 
 ```bash
