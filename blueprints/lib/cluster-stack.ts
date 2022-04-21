@@ -9,9 +9,6 @@ import * as blueprints from '@aws-quickstart/eks-blueprints';
 
 import { CapacityType, KubernetesVersion } from 'aws-cdk-lib/aws-eks';
 
-/**
- * AmazonSSMManagedInstanceCore role is added to connect to EC2 instance by using SSM on AWS web console
- */
 export interface BlueprintConstructProps {
     id: string
 }
@@ -19,16 +16,16 @@ export default class EksBlueprintStack extends Stack {
     constructor(scope: Construct, blueprintProps: BlueprintConstructProps, props: cdk.StackProps) {
         super(scope, blueprintProps.id, props);
 
-        const vpcId = this.node.tryGetContext('vpcId') || ssm.StringParameter.valueFromLookup(this, '/cdk-eks-gpu-cluster/vpc-id');
+        const vpcId = this.node.tryGetContext('vpcId') || ssm.StringParameter.valueFromLookup(this, '/cdk-eks-blueprints/vpc-id');
 
         const addOns: Array<blueprints.ClusterAddOn> = [
             new blueprints.addons.MetricsServerAddOn,
             new blueprints.addons.ClusterAutoScalerAddOn,
             new blueprints.addons.ContainerInsightsAddOn,
-            new blueprints.addons.AwsLoadBalancerControllerAddOn(),
-            new blueprints.addons.VpcCniAddOn(),
-            new blueprints.addons.CoreDnsAddOn(),
-            new blueprints.addons.KubeProxyAddOn()
+            new blueprints.addons.AwsLoadBalancerControllerAddOn,
+            new blueprints.addons.VpcCniAddOn,
+            new blueprints.addons.CoreDnsAddOn,
+            new blueprints.addons.KubeProxyAddOn
         ];
 
         const clusterProvider = new blueprints.GenericClusterProvider({
@@ -58,6 +55,7 @@ export default class EksBlueprintStack extends Stack {
             .enableControlPlaneLogTypes('api')
             .build(scope, blueprintID, props);
 
+        // AmazonSSMManagedInstanceCore role is added to connect to EC2 instances by using SSM on AWS web console
         eksBlueprint.getClusterInfo().nodeGroups?.forEach(n => {
             n.role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore'));
         });

@@ -11,6 +11,6 @@ const env = {
     region: process.env.CDK_DEFAULT_REGION,
     stage: app.node.tryGetContext('stage') || 'local'
 };
-// new EksBlueprintStack(app, { id: `Eks-${CLUSTER_NAME}-${env.stage}` }, { env });
-new EksBlueprintStack(app, { id: `Eks-${CLUSTER_NAME}` }, { env });
+
+new EksBlueprintStack(app, { id: `${CLUSTER_NAME}` }, { env });
 

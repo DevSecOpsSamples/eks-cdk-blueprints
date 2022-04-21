@@ -31,7 +31,7 @@ Use the `cdk` command-line toolkit to interact with your project:
 
 # Install
 
-## Step 1: VPC creation
+## Step 1: VPC
 
 VPC ID will be saved into SSM parameter store to refer from other stacks.
 
@@ -49,11 +49,20 @@ cdk deploy
 
 ## Step 2: EKS cluster and add-on with Blueprints
 
+2 CDK stacks are created eks-blueprint-demo and `eks-blueprint-demo-dev`.
+
 ```bash
-cd ../cluster
+cd ../blueprints
 cdk bootstrap
-cdk deploy
+# this stack
+cdk synth eks-blueprint-demo-dev
+cdk deploy eks-blueprint-demo-dev
+
+# or define your VPC id with context parameter
+cdk deploy eks-blueprint-demo-dev -c vpcId=<vpc-id>
 ```
+
+Cluster Name: [blueprints/lib/cluster-config.ts](./blueprints/lib/cluster-config.ts)
 
 [blueprints/lib/cluster-stack.ts](./blueprints/lib/cluster-stack.ts)
 
@@ -65,20 +74,23 @@ eks-blueprint-demo-dev.ClusterCertificateAuthorityData = xxxxxxxx
 eks-blueprint-demo-dev.ClusterEncryptionConfigKeyArn = 
 eks-blueprint-demo-dev.ClusterEndpoint = https://123456789012.gr7.us-east-1.eks.amazonaws.com
 eks-blueprint-demo-dev.ClusterName = eks-blueprint-demo
-eks-blueprint-demo-dev.ClusterSecurityGroupId = sg-02c0fb1a0d2439f08
-eks-blueprint-demo-dev.VPC = vpc-042de3c35123038fc
+eks-blueprint-demo-dev.ClusterSecurityGroupId = sg-0123456789abc
+eks-blueprint-demo-dev.VPC = vpc-0123456789abc
 eks-blueprint-demo-dev.eksclusterConfigCommand515C0544 = aws eks update-kubeconfig --name eks-blueprint-demo --region us-east-1 --role-arn arn:aws:iam::123456789012:role/eks-blueprint-demo-dev-iamrole10180D71-D83FQPH1BRW3
 eks-blueprint-demo-dev.eksclusterGetTokenCommand3C33A2A5 = aws eks get-token --cluster-name eks-blueprint-demo --region us-east-1 --role-arn arn:aws:iam::123456789012:role/eks-blueprint-demo-dev-iamrole10180D71-D83FQPH1BRW3
 ```
 
-```bash
-eksctl create iamidentitymapping --cluster <cluster-name> --arn arn:aws:iam::<account-id>:role/<role-name> --group system:masters --username admin --region us-east-1
-```
+Pods
 
 ![K9s Pod](./screenshots/pod.png?raw=true)
 
+Services
+
 ![K9s Service](./screenshots/service.png?raw=true)
 
+```bash
+eksctl create iamidentitymapping --cluster <cluster-name> --arn arn:aws:iam::<account-id>:role/<role-name> --group system:masters --username admin --region us-east-1
+```
 
 ## Step 3: Kubernetes Dashboard
 
@@ -97,10 +109,23 @@ kubectl proxy
 ## Step 4: Deploy Sample RESTFul API
 
 ```bash
-kubectl apply -f sample-rest-api.yaml
+cd app
+
+docker build -t sample-rest-api .
+
+docker tag sample-rest-api:latest <account>.dkr.ecr.<region>.amazonaws.com/sample-rest-api:latest
+
+aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com
+
+docker push <account>.dkr.ecr.<region>.amazonaws.com/sample-rest-api:latest
+
 ```
 
-[sample-rest-api.yaml](./sample-rest-api.yaml)
+```bash
+kubectl apply -f ./app/sample-rest-api.yaml
+```
+
+[app/sample-rest-api.yaml](./app/sample-rest-api.yaml)
 # Uninstall
 
 ```bash
