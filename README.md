@@ -25,9 +25,9 @@ Use the `cdk` command-line toolkit to interact with your project:
 
 | Stack                         | Time    |
 |-------------------------------|---------|
-| VPC                           | 1.21    |
-| EKS cluster                   | 21m 12s |
-| Total                         | 22m 32s | 
+| VPC                           | 3m      |
+| EKS cluster                   | 21m     |
+| Total                         | 24m     | 
 
 # Install
 
