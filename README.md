@@ -67,7 +67,8 @@ Services
 eksctl create iamidentitymapping --cluster <cluster-name> --arn arn:aws:iam::<account-id>:role/<role-name> --group system:masters --username admin --region us-east-1
 ```
 
-If you want to create an EKS cluster in the existing VPC, refer to the [ExistingVPC.md](./ExistingVPC.md) page.
+
+If you want to create an EKS cluster with an Existing VPC, refer to the [ExistingVPC.md](./ExistingVPC.md) page.
 
 ### Step 2: Kubernetes Dashboard
 

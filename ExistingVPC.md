@@ -1,4 +1,4 @@
-# CDK EKS Blueprints Sample
+# Create EKS cluster with an Existing VPC
 
 Reference: Resource Providers - https://aws-quickstart.github.io/cdk-eks-blueprints/resource-providers/
 
