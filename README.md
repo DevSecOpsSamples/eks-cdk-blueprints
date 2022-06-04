@@ -123,13 +123,11 @@ kubectl apply -f sample-rest-api.yaml
 
 [app/sample-rest-api-template.yaml](./app/sample-rest-api-template.yaml)
 
-## Destroy/Uninstall
+## Destroy
 
 ```bash
 cd blueprints
 cdk destroy
-cd ../app
-kubectl delete -f sample-rest-api.yaml
 ```
 
 ## Reference
