@@ -79,7 +79,7 @@ kubectl proxy
 
 [Dashboard Login](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login)
 
-### Step 3: Deploy Sample RESTful API
+### Step 3: Build Sample RESTful API
 
 Create an ECR for sample RESTful API:
 
@@ -102,6 +102,8 @@ docker tag sample-rest-api:latest ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/
 aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
 docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/sample-rest-api:latest
 ```
+
+### Step 4: Deploy Sample RESTful API
 
 Create a YAML file for Deployment, Service, HorizontalPodAutoscaler, and Ingress based using sample-rest-api-template.yaml.
 
