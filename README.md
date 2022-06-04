@@ -134,11 +134,8 @@ kubectl delete -f sample-rest-api.yaml
 
 ## Reference
 
-[Blueprints Roadmap](https://github.com/aws-quickstart/cdk-eks-blueprints/projects/1)
+* [Blueprints Roadmap](https://github.com/aws-quickstart/cdk-eks-blueprints/projects/1)
 
-https://www.npmjs.com/package/aws-cdk
+* https://github.com/aws-quickstart/cdk-eks-blueprints
 
-https://github.com/aws-quickstart/cdk-eks-blueprints
-
-https://aws-quickstart.github.io/cdk-eks-blueprints
-
+* https://aws-quickstart.github.io/cdk-eks-blueprints
