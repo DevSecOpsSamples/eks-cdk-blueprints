@@ -114,7 +114,6 @@ cat sample-rest-api.yaml
 kubectl apply -f sample-rest-api.yaml
 
 kubectl apply -f ./app/sample-rest-api.yaml
-kubectl apply -f ./app/cpu-hpa.yaml
 ```
 
 [app/sample-rest-api.yaml](./app/sample-rest-api.yaml)
@@ -124,10 +123,6 @@ kubectl apply -f ./app/cpu-hpa.yaml
 ```bash
 cd ../blueprints
 cdk destroy
-cd ../vpc
-cdk destroy
-
-kubectl delete -f ./app/cpu-hpa.yaml
 kubectl delete -f ./app/sample-rest-api.yaml
 ```
 
