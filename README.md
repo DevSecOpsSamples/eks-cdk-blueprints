@@ -7,9 +7,7 @@ npm install -g aws-cdk@2.20.0
 
 # install packages in the root folder
 npm install
-
-export CDK_DEFAULT_ACCOUNT=123456789012
-export CDK_DEFAULT_REGION=us-east-1
+cdk bootstrap
 ```
 
 Use the `cdk` command-line toolkit to interact with your project:
@@ -25,11 +23,11 @@ Use the `cdk` command-line toolkit to interact with your project:
 |-------------------------------|---------|
 | VPC                           | 3m      |
 | EKS cluster                   | 21m  (38 Stacks)   |
-| Total                         | 24m     | 
+| Total                         | 24m     |
 
-# Install
+## Install
 
-## Step 1: VPC
+### Step 1: VPC
 
 The VPC ID will be saved into the SSM parameter store to refer from other stacks.
 
@@ -39,19 +37,27 @@ Use the `-c vpcId` context parameter if you want to use the existing VPC.
 
 ```bash
 cd vpc
-cdk bootstrap
 cdk deploy
 ```
 
 [vpc/lib/vpc-stack.ts](./vpc/lib/vpc-stack.ts)
 
-## Step 2: EKS cluster and add-on with Blueprints
+If you want to create a new VPC and EKS cluster at a time, deploy using the following stack:
+
+```bash
+# 59 Stacks
+cd ../blueprints-with-vpc
+cdk deploy
+```
+
+ [blueprints-with-vpc/bin/index.ts](./blueprints-with-vpc/bin/index.ts)
+
+### Step 2: EKS cluster and add-on with Blueprints
 
 2 CDK stacks are created eks-blueprint-demo and `eks-blueprint-demo-dev`.
 
 ```bash
 cd ../blueprints
-cdk bootstrap
 cdk deploy eks-blueprint-demo-dev
 
 # or define your VPC id with context parameter
@@ -88,7 +94,7 @@ Services
 eksctl create iamidentitymapping --cluster <cluster-name> --arn arn:aws:iam::<account-id>:role/<role-name> --group system:masters --username admin --region us-east-1
 ```
 
-## Step 3: Kubernetes Dashboard
+### Step 3: Kubernetes Dashboard
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.1/aio/deploy/recommended.yaml
@@ -102,7 +108,7 @@ kubectl proxy
 
 [Dashboard Login](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login)
 
-## Step 4: Deploy Sample RESTFul API
+### Step 4: Deploy Sample RESTful API
 
 ```bash
 cd app
@@ -119,17 +125,24 @@ docker push <account>.dkr.ecr.<region>.amazonaws.com/sample-rest-api:latest
 
 ```bash
 kubectl apply -f ./app/sample-rest-api.yaml
+kubectl apply -f ./app/cpu-hpa.yaml
 ```
 
 [app/sample-rest-api.yaml](./app/sample-rest-api.yaml)
 
-# Uninstall
+## Destroy/Uninstall
 
 ```bash
+cd ../blueprints
+cdk destroy
+cd ../vpc
+cdk destroy
+
+kubectl delete -f ./app/cpu-hpa.yaml
 kubectl delete -f ./app/sample-rest-api.yaml
 ```
 
-# Reference
+## Reference
 
 https://github.com/aws-quickstart/cdk-eks-blueprints
 
