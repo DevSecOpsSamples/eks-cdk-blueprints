@@ -3,6 +3,10 @@
 ![Overview](./screenshots/diagram.png?raw=true)
 
 With EKS Blueprints, you can create EKS clusters that are fully bootstrapped with the operational software that is needed to deploy and operate workloads.
+
+You can create an EKS cluster with `eksctl`, `kops` and `CDK`, but many manual commands are required for operational software and add-on such as ClusterAutoScaler(CA), AwsLoadBalancerController, and MetricsServer.
+With EKS Blueprints, you can configure operational softwares with only `cdk deploy` at a time.
+
 ## Prequisets
 
 ```bash
@@ -137,3 +141,8 @@ cdk destroy
 * https://github.com/aws-quickstart/cdk-eks-blueprints
 
 * https://aws-quickstart.github.io/cdk-eks-blueprints
+
+## Link
+
+* [aws-container](https://github.com/engel80/aws-container)
+* [cdk-eks](https://github.com/engel80/cdk-eks)
