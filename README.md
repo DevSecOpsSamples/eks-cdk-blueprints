@@ -81,7 +81,7 @@ kubectl proxy
 
 ### Step 3: Deploy Sample RESTful API
 
-Create a ECR for sample RESTful API:
+Create an ECR for sample RESTful API:
 
 ```bash
 REGION=$(aws configure get default.region)
@@ -108,6 +108,11 @@ docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/sample-rest-api:latest
 ```
 
 ```bash
+
+sed -e "s|<account-id>|${ACCOUNT_ID}|g" sample-rest-api-template.yaml | sed -e "s|<region>|${REGION}|g" > sample-rest-api.yaml
+cat sample-rest-api.yaml
+kubectl apply -f sample-rest-api.yaml
+
 kubectl apply -f ./app/sample-rest-api.yaml
 kubectl apply -f ./app/cpu-hpa.yaml
 ```
