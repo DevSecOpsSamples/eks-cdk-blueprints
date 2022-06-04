@@ -1,5 +1,7 @@
 # CDK EKS Blueprints Sample
 
+![Overview](./screenshots/diagram.png?raw=true)
+
 ## Prequisets
 
 ```bash
