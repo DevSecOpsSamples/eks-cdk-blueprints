@@ -17,13 +17,15 @@ Use the `cdk` command-line toolkit to interact with your project:
 * `cdk diff`: compares your app with the deployed stack
 * `cdk watch`: deployment every time a file change is detected
 
-## CDK Stack Time Taken
+## Time To Complete
 
 | Stack                         | Time    |
 |-------------------------------|---------|
 | VPC                           | 3m      |
 | EKS cluster                   | 21m  (38 Stacks)   |
-| Total                         | 24m     |
+| Build                         | 1m      |
+| Deploy(including ALB)         | 3m      |
+| Total                         | 28m     |
 
 ## Install
 
@@ -52,6 +54,8 @@ eks-blueprint-local.eksclusterGetTokenCommand3C33A2A5 = aws eks get-token --clus
 ```
 
 Pods
+
+https://k9scli.io/topics/install/
 
 ![K9s Pod](./screenshots/pod.png?raw=true)
 
@@ -107,7 +111,7 @@ docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/sample-rest-api:latest
 
 ### Step 4: Deploy Sample RESTful API
 
-Create a YAML file for Deployment, Service, HorizontalPodAutoscaler, and Ingress based using sample-rest-api-template.yaml.
+Create a YAML file for K8s Deployment, Service, HorizontalPodAutoscaler, and Ingress based using sample-rest-api-template.yaml.
 
 ```bash
 sed -e "s|<account-id>|${ACCOUNT_ID}|g" sample-rest-api-template.yaml | sed -e "s|<region>|${REGION}|g" > sample-rest-api.yaml
@@ -135,3 +139,4 @@ https://www.npmjs.com/package/aws-cdk
 https://github.com/aws-quickstart/cdk-eks-blueprints
 
 https://aws-quickstart.github.io/cdk-eks-blueprints
+
