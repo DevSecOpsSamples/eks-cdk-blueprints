@@ -2,6 +2,7 @@
 
 ![Overview](./screenshots/diagram.png?raw=true)
 
+With EKS Blueprints, you can create EKS clusters that are fully bootstrapped with the operational software that is needed to deploy and operate workloads.
 ## Prequisets
 
 ```bash
@@ -23,11 +24,10 @@ Use the `cdk` command-line toolkit to interact with your project:
 
 | Stack                         | Time    |
 |-------------------------------|---------|
-| VPC                           | 3m      |
-| EKS cluster                   | 21m  (38 Stacks)   |
+| VPC, EKS cluster, Add-on      | 23m     |
 | Build                         | 1m      |
 | Deploy(including ALB)         | 3m      |
-| Total                         | 28m     |
+| Total                         | 27m     |
 
 ## Install
 
