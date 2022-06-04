@@ -117,7 +117,7 @@ docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/sample-rest-api:latest
 
 ### Step 4: Deploy Sample RESTful API
 
-Create a YAML file for K8s Deployment, Service, HorizontalPodAutoscaler, and Ingress based using sample-rest-api-template.yaml.
+Create a YAML file for K8s Deployment, Service, HorizontalPodAutoscaler, and Ingress using a template file.
 
 ```bash
 sed -e "s|<account-id>|${ACCOUNT_ID}|g" sample-rest-api-template.yaml | sed -e "s|<region>|${REGION}|g" > sample-rest-api.yaml
