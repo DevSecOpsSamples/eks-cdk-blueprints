@@ -88,6 +88,8 @@ REGION=$(aws configure get default.region)
 aws ecr create-repository --repository-name sample-rest-api --region ${REGION}
 ```
 
+Build and push to ECR:
+
 ```bash
 cd app
 
