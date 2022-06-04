@@ -96,34 +96,30 @@ ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 
 echo "ACCOUNT_ID: $ACCOUNT_ID"
 echo "REGION: $REGION"
-sleep 1
 
 docker build -t sample-rest-api .
-
 docker tag sample-rest-api:latest ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/sample-rest-api:latest
-
 aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
-
 docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/sample-rest-api:latest
 ```
 
-```bash
+Create a YAML file for Deployment, Service, HorizontalPodAutoscaler, and Ingress based using sample-rest-api-template.yaml.
 
+```bash
 sed -e "s|<account-id>|${ACCOUNT_ID}|g" sample-rest-api-template.yaml | sed -e "s|<region>|${REGION}|g" > sample-rest-api.yaml
 cat sample-rest-api.yaml
 kubectl apply -f sample-rest-api.yaml
-
-kubectl apply -f ./app/sample-rest-api.yaml
 ```
 
-[app/sample-rest-api.yaml](./app/sample-rest-api.yaml)
+[app/sample-rest-api-template.yaml](./app/sample-rest-api-template.yaml)
 
 ## Destroy/Uninstall
 
 ```bash
-cd ../blueprints
+cd blueprints
 cdk destroy
-kubectl delete -f ./app/sample-rest-api.yaml
+cd ../app
+kubectl delete -f sample-rest-api.yaml
 ```
 
 ## Reference
