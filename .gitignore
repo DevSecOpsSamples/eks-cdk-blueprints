@@ -1,7 +1,25 @@
-node_modules
-*cdk.out*
-*cdk.context.json*
-*.log
-*.DS_Store*
+.gradle
+.vscode
 
+*.log
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# internal
 *internal*
+
+# MAC
+**/.DS_Store
+
+# CDK
+**/node_modules
+**/cdk.out
+**/cdk.context.json
+
+# k8s deployment files
+**/sample-rest-api.yaml
