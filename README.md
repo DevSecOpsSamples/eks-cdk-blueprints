@@ -7,7 +7,7 @@ With EKS Blueprints, you can create EKS clusters that are fully bootstrapped wit
 You can create an EKS cluster with `eksctl`, `kops` and `CDK`, but many manual commands are required for operational software and add-on such as ClusterAutoScaler(CA), AwsLoadBalancerController, and MetricsServer.
 With EKS Blueprints, you can configure operational softwares with only `cdk deploy` at a time.
 
-## Prequisets
+## Prerequisites
 
 ```bash
 npm install -g aws-cdk@2.20.0
