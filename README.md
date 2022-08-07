@@ -1,5 +1,7 @@
 # CDK EKS Blueprints Sample
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=engel80_cdk-eks-blueprints&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=engel80_cdk-eks-blueprints) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=engel80_cdk-eks-blueprints&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=engel80_cdk-eks-blueprints)
+
 ![Overview](./screenshots/diagram.png?raw=true)
 
 With EKS Blueprints, you can create EKS clusters that are fully bootstrapped with the operational software that is needed to deploy and operate workloads.
