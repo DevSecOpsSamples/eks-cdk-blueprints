@@ -22,7 +22,6 @@ sonarqube {
         property "sonar.sources", "."
         property "sonar.exclusions", "**/node_modules/**, **/cdk.out/**"
         property "sonar.cpd.exclusions", "**/*index.ts"
-        property "sonar.host.url", "http://127.0.0.1:9000"
         property "sonar.links.ci", "https://github.com/engel80/cdk-eks-blueprints"
         property "sonar.issue.ignore.multicriteria", "e1"
         property "sonar.issue.ignore.multicriteria.e1.ruleKey", "typescript:S1848"
