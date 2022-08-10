@@ -7,7 +7,7 @@ import * as blueprints from '@aws-quickstart/eks-blueprints';
 import { CLUSTER_NAME } from '../lib/cluster-config';
 
 const app = new cdk.App();
-const stage = app.node.tryGetContext('stage') || 'local';
+const stage = app.node.tryGetContext('stage') || 'dev';
 
 const addOns: Array<blueprints.ClusterAddOn> = [
     new blueprints.addons.ClusterAutoScalerAddOn,

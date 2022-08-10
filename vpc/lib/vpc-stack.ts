@@ -11,7 +11,7 @@ export class VpcStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
         super(scope, id, props);
 
-        const vpc = new ec2.Vpc(this, 'Vpc', {
+        const vpc = new ec2.Vpc(this, 'vpc', {
             maxAzs: 3,
             natGateways: 3,
             cidr: '10.0.0.0/16',
