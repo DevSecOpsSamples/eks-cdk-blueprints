@@ -1,14 +1,6 @@
-apply plugin: 'base'
-apply plugin: 'org.sonarqube'
-archivesBaseName = 'eks-cdk-blueprints'
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.5")
-    }
+plugins {
+	id 'base'
+  	id "org.sonarqube" version "3.4.0.2513"
 }
 
 sonarqube {
