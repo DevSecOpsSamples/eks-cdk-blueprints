@@ -1,6 +1,7 @@
 # CDK EKS Blueprints Sample
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=engel80_cdk-eks-blueprints&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=engel80_cdk-eks-blueprints) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=engel80_cdk-eks-blueprints&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=engel80_cdk-eks-blueprints)
+[![Build](https://github.com/DevSecOpsSamples/eks-cdk-blueprints/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/DevSecOpsSamples/eks-cdk-blueprints/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DevSecOpsSamples_eks-cdk-blueprints&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=DevSecOpsSamples_eks-cdk-blueprints) [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=DevSecOpsSamples_eks-cdk-blueprints&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=DevSecOpsSamples_eks-cdk-blueprints)
 
 ![Overview](./screenshots/diagram.png?raw=true)
 
@@ -138,14 +139,14 @@ cdk destroy
 
 ## Reference
 
-* [Blueprints Roadmap](https://github.com/aws-quickstart/cdk-eks-blueprints/projects/1)
+* [Blueprints Roadmap](https://github.com/aws-quickstart/eks-cdk-blueprints/projects/1)
 
-* https://github.com/aws-quickstart/cdk-eks-blueprints
+* https://github.com/aws-quickstart/eks-cdk-blueprints
 
-* https://aws-quickstart.github.io/cdk-eks-blueprints
+* https://aws-quickstart.github.io/eks-cdk-blueprints
 
 ## Link
 
-* [https://github.com/engel80/aws-container](https://github.com/engel80/aws-container)
+* [https://github.com/DevSecOpsSamples/aws-container](https://github.com/DevSecOpsSamples/aws-container)
 
-* [https://github.com/engel80/cdk-eks](https://github.com/engel80/cdk-eks)
+* [https://github.com/DevSecOpsSamples/cdk-eks](https://github.com/DevSecOpsSamples/cdk-eks)
