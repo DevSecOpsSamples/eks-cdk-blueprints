@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: sample-rest-api
-          image: <account>.dkr.ecr.<region>.amazonaws.com/sample-rest-api:latest
+          image: <account-id>.dkr.ecr.<region>.amazonaws.com/sample-rest-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
@@ -45,6 +45,26 @@ spec:
     - port: 8000
       targetPort: 8000
       protocol: TCP
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: 'sample-rest-api-hpa'
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: 'sample-rest-api'
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
